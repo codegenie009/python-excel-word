@@ -1,7 +1,6 @@
 from ast import Sub
 from operator import index
 from random import randint, random, sample
-from matplotlib import style
 import pandas as pd
 from docx import Document
 from docx.shared import Inches
@@ -63,10 +62,9 @@ def gen_problem(mod, sec, exercise):
     explanations = secs.loc[(df['Type'] == 'Explanation')]
     i = 0
     for index in exercise:
-        print(index)
         key = keys.loc[(df['Exercise'] == index)][field[i]].iloc[0]
         explanation = explanations.loc[(df['Exercise'] == index)][field[i]].iloc[0]
-        p2 = document.add_paragraph(f"{getRoman(index)}. é {key} porque {explanation}")
+        p2 = document.add_paragraph(f"{getRoman(i + 1)}. é {key} porque {explanation}")
         p2.paragraph_format.left_indent = Inches(.25)
         i = i + 1
 
